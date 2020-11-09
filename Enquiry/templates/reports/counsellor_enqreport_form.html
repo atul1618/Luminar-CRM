@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<style>
+</style>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <form method="post">
+                    {% csrf_token%}
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Counsellor:</th>
+                            <td>{{form.counsellor}}</td>
+                        </tr>
+                        <tr>
+                            <th>From:</th>
+                            <td>{{form.followup_date}}</td>
+                        </tr>
+                        <tr>
+                            <th>To:</th>
+                            <td>{{form.enquirydate}}</td>
+                        </tr>
+                        </thead>
+                    </table>
+                    <table>
+                        <tr>
+                            <td><input type="submit" class="btn btn-primary" id="submittab"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+<!--            <div class="col-md-4"></div>-->
+        </div>
+    </div>
+{% endblock %}

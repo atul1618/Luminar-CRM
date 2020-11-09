@@ -1,0 +1,127 @@
+<style>
+<!--#batchcode{-->
+<!--padding-left:50px;-->
+<!--}-->
+<!--#batchcodeform,{-->
+<!--padding-left:50px;-->
+<!--padding-top:5px;-->
+<!--}-->
+#batchcourse{
+padding-left:200px;
+}
+#batchcourseform,#batchstatusform{
+padding-left:80px;
+padding-top:10px;
+}
+
+#batchstatus{
+padding-left:200px;
+padding-top:20px;
+}
+#batchtab{
+        padding-left:100px;
+        padding-top:50px;
+        }
+#batchcancel{
+padding-left:100px;
+padding-top:50px;
+}
+</style>
+{% extends 'base.html' %}
+{% block content  %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Accordion -->
+                    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                            <h6 class="m-0 font-weight-bold text-primary">Add New Batch</h6>
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse hide" id="collapseCardExample">
+                        <div class="card-body">
+                            <form method="post" id="batch_create">
+                                {% csrf_token %}
+                                <table>
+                                    <tr>
+                                        <td id="batchcode">Batch Code:</td>
+                                        <td id="batchcourse">Course:</td>
+                                    </tr>
+                                </table>
+                                <table>
+                                    <tr>
+                                        <td id="batchcodeform">{{form.batch_code}}</td>
+                                        <td id="batchcourseform">{{form.course}}</td>
+                                    </tr>
+                                      {% for field in form.visible_fields %}
+                                    <tr>
+                                        <td>{{field.errors}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                                <table>
+                                    <tr>
+                                        <td id="batchdate">Batch Date:</td>
+                                        <td id="batchstatus">Batch Status:</td>
+                                    </tr>
+                                </table>
+                                <table>
+                                    <tr>
+                                        <td id="batchdateform">{{form.batch_date}}</td>
+                                        <td id="batchstatusform">{{form.batch_status}}</td>
+                                    </tr>
+                                </table>
+                                <table>
+
+                                </table>
+                                <table>
+                                    <tr>
+                                        <td id="batchtab"><input type="submit" class="btn btn-success" value="Create" ></td>
+                                        <td id="batchcancel">
+                                            <a href="#collapseCardExample" data-toggle="collapse" class="btn btn-danger">Cancel</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Accordion -->
+                <a href="#collpasebatch" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold text-primary">View Batches</h6>
+                </a>
+                </div>
+                <!-- Card Content - Collapse -->
+                <div class="collapse hide" id="collpasebatch">
+                    <div class="card-body">
+                        <table class="table"  id="table">
+                            <thead class="bg-success">
+                                <tr>
+                                    <th style="text-align:center;">Batch Code</th>
+                                    <th style="text-align:center;">Date</th>
+                                    <th style="text-align:center;">Status</th>
+                                    <th style="text-align:center;">Action 1</th>
+                                    <th style="text-align:center;">Action 2</th>
+                                </tr>
+                            </thead>
+                            {% for batchview in batch %}
+                            <tr id="one">
+                                <td>{{batchview.batch_code}}</td>
+                                <td>{{batchview.batch_date}}</td>
+                                <td>{{batchview.get_batch_status_display}}</td>
+                                <td><a href="{% url 'updatebatch' batchview.id%}" class="btn btn-primary">Update</a></td>
+                                <td><a href="{%url 'deletebatch' batchview.id %}" class="btn btn-danger">Delete</a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

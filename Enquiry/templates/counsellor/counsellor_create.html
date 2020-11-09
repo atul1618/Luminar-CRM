@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<style>
+    #staffcreate{
+    padding:90px;
+    }
+
+    #addtab{
+     margin-top:25px;
+    margin-left:180px;
+    }
+    th,td{
+    text-align:center;
+    }
+</style>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container" >
+        <div class="row" id="staffcreate">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form method="post">
+                    {% csrf_token %}
+                    <table>
+                        {% for field in form %}
+                        <tr>
+                            <th>{{field.label_tag}}</th>
+                            <td>{{field}}</td>
+                            <td>{{field.errors}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" class="btn btn-success" value="Add" id="addtab">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="table" style="width:350px;">
+                  <thead>
+                    <tr class="bg-success">
+                        <th style="text-align:center;">Id</th>
+                        <th style="text-align:center;">Counsellor Name</th>
+                    </tr>
+                    </thead>
+                <tbody>
+                {% for name in counsellor %}
+                <tr>
+                    <td>{{name.id}}</td>
+                    <td>{{name.counsellor_name}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+{% endblock %}

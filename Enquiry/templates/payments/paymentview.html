@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-borderless" style="width:980px;">
+                    <thead>
+                    <tr class="bg-info" >
+                        <th style="text-align:center;">Name</th>
+                        <td>{{info.studentname}}</td>
+                    </tr>
+                    <tr >
+                        <th  style="text-align:center;">Admission No</th>
+                        <td>{{info.admission_no}}</td>
+                    </tr>
+                    <tr>
+                        <th  style="text-align:center;">Batch</th>
+                        <td>{{info.batchcode}}</td>
+                    </tr>
+                    </thead>
+                </table>
+
+                <table class="table" style="width:980px;">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="bg-warning" style="text-align:center;">Payment date</th>
+                            <th class="bg-warning" style="text-align:center;"> Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in payinfo %}
+                        <tr>
+                            <td>{{item.payment_date}}</td>
+                            <td >{{item.amount}}</td>
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table table-borderless" style="width:980px;">
+                    <tr class="bg-success" >
+                        <th style="text-align:center;">Remaining fees:</th>
+                        <td style="text-align:center;"><strong>{{rem_fees}}</strong></td>
+                        <td style="text-align:center;"><strong>{{msg}}</strong></td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

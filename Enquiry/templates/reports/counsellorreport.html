@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<style>
+    #staffdiv{
+    padding:90px;
+    }
+</style>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row" id="staffdiv">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="table">
+                    <thead>
+                    {% if report %}
+                        {% for details in report %}
+                        <tr>
+                            <th class="bg-primary">Counsellor Name</th>
+                            <td>{{details.counsellor__counsellor_name}}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-primary">Enquiries taken:</th>
+                            <td>{{details.enq}}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                                <th class="bg-primary">Counsellor Name</th>
+                                <td>{{name}}</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-primary">Enquiries taken:</th>
+                                <td>0</td>
+                            </tr>
+                    {% endif %}
+                    {% if admissions %}
+                        {% for admlist in admissions %}
+                        <tr>
+                            <th class="bg-primary">Admitted:</th>
+                            <td>{{admlist.enq}}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <th class="bg-primary">Admitted:</th>
+                            <td>0</td>
+                        </tr>
+                    {% endif %}
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+{% endblock %}

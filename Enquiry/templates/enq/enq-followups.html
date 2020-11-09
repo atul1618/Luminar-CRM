@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row" id="followdiv">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                {%if enquiries %}
+                    <table  class="table" border="3">
+                            <thead class="bg-primary">
+                                <tr style="text-align:center;">
+                                    <th>Student name</th>
+                                    <th>Course</th>
+                                    <th>Contact</th>
+                                    <th>Status</th>
+                                    <th>Follow Up</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             {% for data in enquiries %}
+                            <tr>
+                                <td>{{data.studentname}}</td>
+                                <td>{{data.course}}</td>
+                                <td>{{data.contact}}</td>
+                                <td>{{data.get_status_display}}</td>
+                                <td>
+                                    <a href="{% url 'followupdetail' data.enquiryid %}" >Followup</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                {% else %}
+                <table id="follow">
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>
+                                    <p><strong>No followups on today</strong></p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                {% endif %}
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+{% endblock %}

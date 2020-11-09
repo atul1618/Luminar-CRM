@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row" id="enqview">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr class="table-success"  style="text-align:center;">
+                            <th>Studentname</th>
+                            <td>{{details.studentname}}</td>
+                        </tr>
+                        <tr class="table-danger" style="text-align:center;">
+                            <th>Address</th>
+                            <td>{{details.address}}</td>
+                        </tr>
+                        <tr class="table-info"  style="text-align:center;">
+                            <th>Qualification</th>
+                            <td>{{details.qualification}}</td>
+                        </tr>
+                        <tr class="table-warning"  style="text-align:center;">
+                            <th>College Name</th>
+                            <td>{{details.collegename}}</td>
+                        </tr>
+                        <tr class="table-danger"  style="text-align:center;">
+                            <th>Course</th>
+                            <td>{{details.course}}</td>
+                        </tr>
+                        <tr class="table-success"  style="text-align:center;">
+                            <th>Batch</th>
+                            <td>{{details.batch}}</td>
+                        </tr>
+                        <tr class="table-warning"  style="text-align:center;">
+                            <th>Contact</th>
+                            <td>{{details.contact}}</td>
+                        </tr>
+                        <tr class="table-success"  style="text-align:center;">
+                            <th>Email</th>
+                            <td>{{details.email}}</td>
+                        </tr>
+                        <tr class="table-danger"  style="text-align:center;">
+                            <th>Counsellor</th>
+                            <td>{{details.counsellor}}</td>
+                        </tr>
+                        <tr class="table-info"  style="text-align:center;">
+                            <th>Enquiry Date</th>
+                            <td>{{details.enquirydate}}</td>
+                        </tr>
+                        <tr class="table-warning"  style="text-align:center;">
+                            <th>Follow Up Date</th>
+                            <td>{{details.followup_date}}</td>
+                        </tr>
+                        <tr class="table-success" style="text-align:center;">
+                            <th>Status</th>
+                            <td>{{details.get_status_display}}</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+{% endblock %}

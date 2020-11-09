@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                 <form>
+                    <table class="table">
+                        <thead class="bg-primary">
+                        <tr>
+                            <th style="text-align:center;">Student Name</th>
+                            <th style="text-align:center;" >Qualification</th>
+                            <th style="text-align:center;">Course</th>
+                            <th style="text-align:center;">Contact</th>
+                            <th style="text-align:center;">Enquiry Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for details in info %}
+                        <tr>
+                            <td>{{details.studentname}}</td>
+                            <td>{{details.qualification}}</td>
+                            <td>{{details.course}}</td>
+                            <td>{{details.contact}}</td>
+                            <td>{{details.enquirydate}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><a href="{% url 'followupdetail' details.enquiryid %}" class="btn btn-success">Update</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row" id="view_followup">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                   <table class="table" >
+                            <thead class="bg-primary">
+                            <tr>
+                                <th style="text-align:center;">Student Name</th>
+                                <th style="text-align:center;">Course</th>
+                                <th style="text-align:center;">Status</th>
+                                <th style="text-align:center;">Action</th>
+                            </tr>
+                            </thead>
+                        <tbody>
+                            {% for data in item %}
+                        <tr>
+                            <td>{{data.studentname}}</td>
+                            <td>{{data.course}}</td>
+                            <td>{{data.get_status_display}}</td>
+                            <td><a href="{% url 'viewinfo' data.enquiryid%}" class="btn btn-success">View</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                        </table>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+{% endblock %}

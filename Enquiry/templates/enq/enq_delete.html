@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    {% csrf_token %}
+                    <table  class="table" border="3">
+                        <thead class="bg-info">
+                            <tr>
+                                <th>Student name</th>
+                                <th>Address</th>
+                                <th>Course</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{object.studentname}}</td>
+                            <td>{{object.address}}</td>
+                            <td>{{object.course}}</td>
+                            <td>{{object.get_status_display}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" class="btn btn-danger" value="Delete" id="batchtab" >
+                                <a href="{% url 'listenq' %}" class="btn btn-primary" id="batchtab">Cancel</a>
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+

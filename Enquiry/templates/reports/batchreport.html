@@ -1,0 +1,70 @@
+<style>
+    #batchdiv{
+    margin-top:90px;
+    }
+    td{
+        text-align:center;
+        }
+</style>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row" id="batchdiv">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="table table-borderless">
+                    <thead>
+                    {% for reports in batch %}
+                        <tr class="table-success" style="text-align:center;">
+                            <th >Course name:</th>
+                            <td>{{reports.batchcode__course__course_name}}</td>
+                        </tr>
+                        <tr class="table-danger" style="text-align:center;">
+                            <th>Batch code:</th>
+                            <td>{{reports.batchcode__batch_code}}</td>
+                        </tr>
+                        <tr class="table-info" style="text-align:center;">
+                            <th>Batch Status:</th>
+                            {% for i in batchstatus %}
+                            <td>{{i.status}}</td>
+                            {% endfor %}
+                        </tr>
+                        <tr class="table-warning" style="text-align:center;">
+                            <th>Batch Date:</th>
+                            <td>{{reports.batchcode__batch_date}}</td>
+                        </tr>
+
+                        <tr class="table-success" style="text-align:center;">
+                            <th>Enquiries:</th>
+                            {% if enquiries %}
+                            {% for enqnum in enquiries %}
+                            <td>{{enqnum.enq}}</td>
+                            {% endfor %}
+                            {% else %}
+                            <td>0</td>
+                            {% endif %}
+                        </tr>
+                        <tr class="table-danger" style="text-align:center;">
+                            <th>No of students:</th>
+                            <td>{{reports.students}}</td>
+                        </tr>
+                        <tr class="table-info" style="text-align:center;">
+                            <th>Revenue expected:</th>
+                            <td>{{reports.expected}}</td>
+                        </tr>
+                        <tr class="table-danger" style="text-align:center;">
+                            <th>Revenue collected:</th>
+                            {% if revenue %}
+                            <td>{{revenue.collected}}</td>
+                            {% else %}
+                            <td>0</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+{% endblock %}

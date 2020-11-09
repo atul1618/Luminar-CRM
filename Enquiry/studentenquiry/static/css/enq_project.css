@@ -1,0 +1,55 @@
+#enq_submit{
+    margin-top:20px;
+    margin-left:450px;
+    }
+
+.formtab{
+    padding-left:85px;
+    }
+
+form{
+    line-height:55px;
+    }
+.enqinfo{
+    padding-left:5px;
+    }
+
+td{
+    text-align:center;
+    color:black;
+    font-weight:bolder;
+    }
+
+th{
+    text-align:center;
+    color:black;
+    font-weight:bolder;
+}
+
+#enqlist{
+margin-top:80px;
+}
+#adtab{
+    margin-left:100px;
+    }
+#linktab{
+    margin-left:300px;
+    margin-top:20px;
+    }
+
+#viewtab{
+     margin-left:130px;
+     margin-top:40px;
+        }
+
+#view_followup{
+margin-top:100px;
+}
+
+#delete{
+    margin-left:300px;
+    margin-top:35px;
+    }
+
+
+

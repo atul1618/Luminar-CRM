@@ -1,0 +1,59 @@
+<style>
+#batchupdatetab{
+margin-left:340px;
+margin-top:25px;
+}
+#cancel_update{
+padding-left:50px;
+padding-top:20px;
+}
+</style>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                            <h6 class="m-0 font-weight-bold text-primary">Update Batch</h6>
+                    </a>
+                <!-- Card Content - Collapse -->
+                    <div class="collapse show" id="collapseCardExample">
+                        <div class="card-body">
+                            <form method="post" id="batchfrm">
+                            {% csrf_token %}
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Batch Code:</th>
+                                        <td>{{form.batch_code}}</td>
+                                        <th class="formtab">Course:</th>
+                                        <td class="formtab">{{form.course}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Batch Date:</th>
+                                        <td>{{form.batch_date}}</td>
+                                        <th class="formtab">Batch Status:</th>
+                                        <td class="formtab">{{form.batch_status}}</td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="submit" class="btn btn-success" value="Update" id="batchupdatetab">
+                                    </td>
+                                    <td id="cancel_update">
+                                        <a href="{% url 'createbatch' %}" class="btn btn-danger" >Cancel</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

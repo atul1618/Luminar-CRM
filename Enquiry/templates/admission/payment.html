@@ -1,0 +1,63 @@
+<style>
+#pay_title{
+    padding-bottom:25px;
+    }
+#payfield{
+    padding-top:25px;
+    }
+
+</style>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3 align="center" id="pay_title">Fee payment</h3>
+            <form method="post" id="payfrm">
+                {% csrf_token %}
+                <table class="table table-borderless">
+                    <tr class="bg-primary">
+                        <td style="text-align:center;">Name:</td>
+                        <td >{{info.studentname}}</td>
+                    </tr>
+                    <tr class="table-light">
+                        <td style="text-align:center;">Course:</td>
+                        <td >{{info.course}}</td>
+                    </tr>
+                    <tr class="table-danger">
+                        <td style="text-align:center;">Phone:</td>
+                        <td >{{info.contact}}</td>
+                    </tr>
+                    <tr class="bg-info">
+                        <th style="text-align:center;">Remaining fees:</th>
+                        <td>{{remaining}}</td>
+                    </tr>
+                     {% for field in form.visible_fields %}
+                    <tr id="payfield">
+                        <td style="text-align:center;">{{field.label_tag}}</td>
+                        <td style="text-align:center;">{{field}}</td>
+                        <td>{{field.errors}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% for field in form.hidden_fields %}
+                    <tr>
+                        <td>{{field}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <table>
+                    <tr>
+                        <td><input type="submit" class="btn btn-primary"  id="paytab" value="Pay"></td>
+                    </tr>
+                </table>
+            </form>
+<!--            {{enqid}}-->
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+
+{% endblock %}

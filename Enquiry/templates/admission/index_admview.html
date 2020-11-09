@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr class="table-success"  style="text-align:center;">
+                        <th>Student Name</th>
+                        {% for item in details %}
+                        <td>{{item.studentname}}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr class="table-danger" style="text-align:center;">
+                        <th>Address</th>
+                        {% for item in details %}
+                        <td>{{item.address}}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr class="table-info"  style="text-align:center;">
+                        <th>College Name:</th>
+                        {% for item in details %}
+                        <td>{{item.collegename}}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr class="table-warning"  style="text-align:center;">
+                        <th>Qualification</th>
+                        {% for item in details %}
+                        <td>{{item.qualification}}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr class="table-danger"  style="text-align:center;">
+                        <th>Counsellor</th>
+                         {% for item in details %}
+                        <td>{{item.counsellor__counsellor_name}}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr class="table-success"  style="text-align:center;">
+                        <th>Contact</th>
+                         {% for item in details %}
+                        <td>{{item.contact}}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr class="table-warning"  style="text-align:center;">
+                        <th>Email</th>
+                        {% for item in details %}
+                        <td>{{item.email}}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr class="table-success"  style="text-align:center;">
+                        <th>Status:</th>
+                        {% for item in details %}
+                        <td>{{item.std_status}}</td>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                </table>
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+{% endblock %}

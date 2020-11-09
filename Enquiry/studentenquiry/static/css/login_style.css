@@ -1,0 +1,99 @@
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Montserrat', sans-serif;
+    background-image:url("/static/img/bg1.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+}
+
+#userimage img{
+    width:40%;
+    margin-left:80px;
+}
+
+#userimage h1{
+    text-align:center;
+    font-size:40px;
+    color:#f55600;
+
+}
+
+#loginbox{
+    width:280px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.textbox{
+    width:100%;
+    line-height:50px;
+    border-bottom:2px solid #f55600;
+    overflow:hidden;
+}
+
+.textbox input{
+    border:none;
+    outline:none;
+    background:none;
+    color:black;
+    font-size:18px;
+
+}
+
+.textbox i{
+    width:26px;
+    float:left;
+    text-align:center;
+    margin-top:15px;
+}
+
+.login-btn{
+    width:100%;
+    display:block;
+    background:none;
+    border:2px solid #fa3c0c;
+    margin-top:25px;
+    padding:5px;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#dp{
+    margin-top:20px;
+    border-bottom:none;
+}
+
+.error_msg{
+    color:black;
+
+}
+
+input[type="file" i]{
+   margin-top:30px;
+   margin-bottom:30px;
+   font-size:17px;
+
+}
+
+aside{
+    float:right;
+    top:50%;
+    left:60%;
+    position:absolute;
+    background:none;
+
+}
+@media only screen and (max-width: 768px){
+    body{
+        background-size:auto;
+    }
+}
+
+}

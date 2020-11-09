@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    {% csrf_token %}
+                    <table>
+                        <thead>
+                        <tr>
+                                <th>Student name</th>
+                                <td>{{form.studentname}}</td>
+                                <th class="formtab">Address</th>
+                                <td class="formtab">{{form.address}}</td>
+                            </tr>
+                        </thead>
+                        <thead>
+                        <tr>
+                                <th>Qualification</th>
+                                <td>{{form.qualification}}</td>
+                                <th class="formtab">College Name</th>
+                                <td class="formtab">{{form.collegename}}</td>
+                            </tr>
+                        </thead>
+                        <thead>
+                        <tr>
+                                <th>Course</th>
+                                <td>{{form.course}}</td>
+                                <th class="formtab">Batch</th>
+                                <td class="formtab">{{form.batch}}</td>
+                            </tr>
+                        </thead>
+                        <thead>
+                        <tr>
+                                <th>Contact</th>
+                                <td>{{form.contact}}</td>
+                                <th class="formtab">Email</th>
+                                <td class="formtab">{{form.email}}</td>
+                            </tr>
+                        </thead>
+                        <thead>
+                        <tr>
+                                <th>Counsellor</th>
+                                <td>{{form.counsellor}}</td>
+                                <th class="formtab">Source</th>
+                                <td class="formtab">{{form.source}}</td>
+                            </tr>
+                        </thead>
+                        <thead>
+                        <tr>
+                                <th>Enquiry date</th>
+                                <td>{{form.enquirydate}}</td>
+                                <th class="formtab">Follow Up Date</th>
+                                <td class="formtab">{{form.followup_date}}</td>
+                            </tr>
+                         <tr>
+                             <th class="enqinfo">Status</th>
+                             <td class="enqinfo">{{form.status}}</td>
+                        </tr>
+                        </thead>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Submit" class="btn btn-primary" id="enq_submit">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

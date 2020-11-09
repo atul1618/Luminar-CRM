@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                            <h6 class="m-0 font-weight-bold text-primary">Create Course</h6>
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse hide" id="collapseCardExample">
+                        <div class="card-body">
+                            <form method="post" id="coursefrm">
+                                {% csrf_token %}
+                                <table>
+                                    {% for fields in form %}
+                                    <tr>
+                                        <th>{{fields.label_tag}}</th>
+                                        <td>{{fields}}</td>
+                                        <td>{{field.errors}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" class="btn btn-primary" value="Create course" id="create_course">
+                                            <a href="#collapseCardExample" data-toggle="collapse" class="btn btn-danger" id="cancel_create">Cancel</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                    <a href="#collapseCourse" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                            <h6 class="m-0 font-weight-bold text-primary">View Courses</h6>
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse hide" id="collapseCourse">
+                        <div class="card-body">
+                            <table class="table">
+                              <thead class="bg-success">
+                                  <tr>
+                                      <th style="text-align:center;">Course Name</th>
+                                      <th style="text-align:center;">Course Duration</th>
+                                      <th style="text-align:center;">Action 1</th>
+                                      <th style="text-align:center;">Action 2</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for course in courselist %}
+                                  <tr>
+                                      <td>{{course.course_name}}</td>
+                                      <td>{{course.course_duration}}</td>
+                                      <td><a href="{%url 'courseupdate' course.id %}" class="btn btn-primary">Update</a> </td>
+                                      <td><a href="{% url 'deletecourse' course.id %}" class="btn btn-danger">Delete</a></td>
+                                  </tr>
+                                  {% endfor %}
+                              </tbody>
+                      </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

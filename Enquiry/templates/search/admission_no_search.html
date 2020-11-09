@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h3>Search Results:</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {% if admission%}
+                <table id="searchresults" class="table table-bordered" style="width:500px;" border="2">
+                    <thead class="bg-info">
+                        <tr>
+                            <th style="text-align:center;">Admission No</th>
+                            <th style="text-align:center;">Student Name</th>
+                            <th style="text-align:center;">Batch</th>
+                            <th style="text-align:center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in admission %}
+                        <tr>
+                            <td>{{item.admission_no}}</td>
+                            <td>{{item.studentname}}</td>
+                            <td>{{item.batchcode}}</td>
+                            <td><a href="{% url 'payview' item.admission_no %}" class="btn btn-success">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <table>
+                      <tr>
+                          <td>
+                              <p>No search results</p>
+                          </td>
+                      </tr>
+                    <tr>
+                         <td>
+                               Your search query: <strong>{{search}}</strong> do not match any documents
+                          </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             Suggestions:
+                                    <ul>
+                                        <li>Make sure that all words are spelled correctly</li>
+                                        <li>Try different keywords</li>
+                                        <li>Try fewer keywords</li>
+                                        <li>Try more general keywords</li>
+                                    </ul>
+                        </td>
+                    </tr>
+                </table>
+            {% endif %}
+        </div>
+        <div class="col-md-4" id="searchpay">
+
+        </div>
+    </div>
+</div>
+{% endblock %}

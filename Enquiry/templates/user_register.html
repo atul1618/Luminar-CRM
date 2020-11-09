@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up page</title>
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+    aside{
+    float:right;
+    top:60%;
+    left:60%;
+    position:absolute;
+    background:none;
+
+}
+</style>
+<body>
+    <section>
+        <div id="loginbox">
+      <div id="userimage">
+            <img src="{% static 'img/user.png' %}">
+            <h1>Sign Up</h1>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+          <div class="textbox">
+            <span> <i class="fa fa-user"></i> </span>{{form.first_name}}</div>
+          <div class="textbox">
+            <span> <i class="fa fa-user"></i></span>
+              {{form.last_name}}
+          </div>
+          <div class="textbox">
+            <span> <i class="fa fa-user"></i></span>
+            {{form.username}}
+          </div>
+          <div class="textbox">
+            <span> <i class="fa fa-envelope"></i></span>
+            {{form.email}}
+          </div>
+          <div class="textbox">
+            <span> <i class="fa fa-lock"></i></span>
+            {{form.password1}}
+          </div>
+          <div class="textbox">
+            <span> <i class="fa fa-lock"></i></span>
+            {{form.password2}}
+          </div>
+    <!--      <div >{{form.image}}</div>-->
+          <button type="submit" class="login-btn">Sign Up</button>
+        </form>
+    </div>
+    </section>
+
+    <aside>
+        <div class="error_msg">{{form.errors}}</div>
+    </aside>
+</body>
+</html>

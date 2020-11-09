@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{{code}} BATCH DETAILS</h1>
+  </div>
+
+<div class="row">
+        <!--  Enquiry Count -->
+
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-lg font-weight-bold text-primary text-uppercase mb-1"><i><strong>Enquiries</strong></i></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{enquiries}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--  End of Enquiry Count -->
+
+    <!--  Call Back Count -->
+
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-lg font-weight-bold text-primary text-uppercase mb-1"><i><strong>Call Backs</strong></i></div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{callback}}</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--  End of Call Count -->
+
+    <!--  Admissions Count -->
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-lg font-weight-bold text-primary text-uppercase mb-1"><i><strong>Admitted</strong></i></div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{admitted}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  End of Admissions Count -->
+    <!--  Cancelled Count -->
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-danger shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-lg font-weight-bold text-primary text-uppercase mb-1"><i><strong>Cancelled</strong></i></div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{cancelcount}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  End of Cancelled Count -->
+</div>
+<!--Batch Info -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-primary">Batch Info</h6>
+        </a>
+
+            <!-- Card Content - Collapse -->
+            <div class="collapse hide" id="collapseCardExample">
+                <div class="container">
+                     <div class="card-body">
+                        <table class="table table-borderless">
+                            {% for details in batchinfo %}
+                                <tr>
+                                    <td><strong>Course:</strong></td>
+                                    <td style="color:red;">{{details.course__course_name}}</td>
+                                    <td><strong>Batch Code:</strong></td>
+                                    <td style="color:red;">{{details.batch_code}}</td>
+                                    <td><strong>Course Duration:</strong></td>
+                                    <td style="color:red;">{{details.course__course_duration}}</td>
+                                </tr>
+                                <tr>
+
+                                     <td><strong>Batch Start Date:</strong></td>
+                                    <td style="color:red;">{{details.batch_date}}</td>
+                                    <td><strong>Batch Status:</strong></td>
+                                    <td style="color:red;">{{details.status}}</td>
+                                    <td><strong>Earnings:</strong></td>
+                                    <td style="color:red;">{{earnings}}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Enquiry list -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+        <a href="#collapseStudentList" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-primary">All Enquiries</h6>
+        </a>
+
+            <!-- Card Content - Collapse -->
+            <div class="collapse hide" id="collapseStudentList">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" width="100%" cellspacing="0">
+                            <thead class="bg-success">
+                            <tr>
+                                <td>Name</td>
+                                <td>Contact</td>
+                                <td>Counsellor</td>
+                                <td>Status</td>
+                                <td>Action</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for details in stdinfo %}
+                            <tr>
+                                <td>{{details.studentname}}</td>
+                                <td>{{details.contact}}</td>
+                                <td>{{details.counsellor__counsellor_name}}</td>
+                                <td>{{details.std_status}}</td>
+                                <td><a href="{% url 'viewenq' details.enquiryid%}" class="btn btn-info">View</a></td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Admitted list-->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+        <a href="#collapseadmitted" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <h6 class="m-0 font-weight-bold text-primary">Admitted students </h6>
+        </a>
+
+            <!-- Card Content - Collapse -->
+            <div class="collapse hide" id="collapseadmitted">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" width="100%" cellspacing="0">
+                            <thead class="bg-success">
+                            <tr>
+                                <td>Admission No </td>
+                                <td>Name</td>
+                                <td>Joining Date</td>
+                                <td>Course Fees</td>
+                                <td>Action</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for admlist in adm %}
+                            <tr>
+                                <td>{{admlist.admission_no}}</td>
+                                <td>{{admlist.studentname}}</td>
+                                <td>{{admlist.date}}</td>
+                                <td>{{admlist.coursefees}}</td>
+                                <td><a href="{% url 'index_admdetails' admlist.enquiryid %}" class="btn btn-info">View</a></td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
